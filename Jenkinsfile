@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven "Maven"
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -8,7 +12,7 @@ pipeline {
             }
         }
         
-        stage("build & SonarQube analysis") {
+        stage("SonarQube analysis") {
             agent any
             steps {
               withSonarQubeEnv('sonarqube') {
