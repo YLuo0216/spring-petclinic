@@ -1,0 +1,9 @@
+- hosts: production-server
+  become: yes
+  tasks:
+  - name: copy petclinic
+    copy:
+      src: "/var/jenkins_home/workspace/assignment4/target/spring-petclinic-3.2.0-SNAPSHOT.jar"
+      dest: "/spring-petclinic-3.2.0-SNAPSHOT.jar"
+  - name: run petclinic
+    shell: java -jar -Dserver.port=8100 -Dserver.address=172.17.0.2 /spring-petclinic-3.0.0-SNAPSHOT.jar
